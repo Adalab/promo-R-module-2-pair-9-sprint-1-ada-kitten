@@ -29,7 +29,7 @@
         <nav class="menu-nav">
           <ul class="menu">
             <li class="item">
-              <span class="fas fa-plus-circle"> </span>
+              <span class="fas fa-plus-circle js-plus"> </span>
             </li>
           </ul>
         </nav>
@@ -41,17 +41,28 @@
         <h2 class="title">¿Agregamos un nuevo gatito a Adalab?</h2>
         <form class="form">
           <input
-            class="input"
+            class="input js-input-photo"
             type="text"
             placeholder="Url de la foto"
             required
           />
-          <input class="input" type="text" placeholder="Nombre" required />
+          <input
+            class="input js-input-name"
+            type="text"
+            placeholder="Nombre"
+            required
+          />
           <input class="input" type="text" placeholder="Raza" />
-          <input class="input" type="text" placeholder="Descripción" required />
-          <label class=""></label>
-          <button class="button">Añadir</button>
+          <input
+            class="input js-input-desc"
+            type="text"
+            placeholder="Descripción"
+            required
+          />
+          <label class="js-label-error"></label>
+          <button class="button js-btn-add">Añadir</button>
           <button class="button-cancel">Cancelar</button>
+          <p class="js-validation"></p>
         </form>
       </section>
 
@@ -69,7 +80,7 @@
             placeholder="Descripción"
           />
           <input
-            class="input js-input"
+            class="input js-inputRace"
             type="select"
             name="raza"
             placeholder="Raza"
@@ -77,7 +88,8 @@
             value=""
           />
 
-          <button class="button">Buscar</button>
+          <button class="button js-search">Buscar</button>
+          <p class="js-searchValidator"></p>
         </form>
       </section>
 

@@ -140,14 +140,17 @@ if (kittenDesc3.includes(descrSearchText)) {
 }
 
 formElement.classList.add('collapsed');
+/* CORTAMOS ESTO PARA EL EJERCICIO EVENTOS
 
 if (formElement.classList.contains('collapsed')) {
   formElement.classList.remove('collapsed');
 } else {
   formElement.classList.add('collapsed');
 }
+*/
 
 // BONUS NO FINALIZADO COMPROBAR
+/*
 let html = '';
 const inputRaza = document.querySelector('.js-input');
 inputRaza.value = html;
@@ -157,3 +160,68 @@ if (kittenRace1 === '') {
 } else {
   html = race;
 }
+*/
+
+const plusElement = document.querySelector ('.js-plus');
+
+plusElement.addEventListener('click', (event) => {
+
+  event.preventDefault();
+
+  if (formElement.classList.contains('collapsed')) {
+    formElement.classList.remove('collapsed');
+  } else {
+    formElement.classList.add('collapsed');
+  }
+})
+
+const añadirElement = document.querySelector ('.js-btn-add');
+const inputDesc = document.querySelector('.js-input-desc');
+const inputPhoto = document.querySelector('.js-input-photo');
+const inputName = document.querySelector('.js-input-name');
+const labelMesageError = document.querySelector('.js-label-error');
+const validationElement= document.querySelector ('.js-validation');
+
+
+añadirElement.addEventListener('click', (event)=> {
+/*   event.preventDefault(); */
+  const valueDesc = inputDesc.value;
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+  if (valueDesc === '' || valuePhoto === '' || valueName === '') {
+     validationElement.innerHTML = 'Debe rellenar todos los valores';
+    }
+  })
+
+  const searchElement = document.querySelector ('.js-search');
+  const inputRaceElement = document.querySelector ('.js-inputRace');
+  const searchValidatorElement = document.querySelector ('.js-searchValidator');
+  
+
+   searchElement.addEventListener ('click', (event)=> {
+    const searchDescValue = input_search_desc.value;
+    const searchRaceValue = inputRaceElement.value;
+    if (searchDescValue === '' || searchRaceValue === '') {
+      searchValidatorElement.innerHTML = 'Debe rellenar todos los valores';
+     }
+   })
+
+
+   const cancelElement = document.querySelector ('.js-cancel');
+
+   cancelElement.addEventListener ('click', (event) =>{
+    event.preventDefault();
+    formElement.classList.add('collapsed');
+    const valueDesc = inputDesc.value;
+    const valuePhoto = inputPhoto.value;
+    const valueName = inputName.value;
+    valueDesc ='';
+    valuePhoto='';
+    valueName ='';
+   })
+   //SOPORTE: 
+   /* 
+   ESTA BIEN PONER VALOR ="" O EXISTE FC RESET
+   PARA QUITAR REQUIRED DE CADA INPUT PARA QUE NOS DEJE OCULTAR
+   BUSCAR: NO SE QUEDA EL PARRAFO DE LA VALIDACIÓN SE BORRA RÁPIDO.
+   */
