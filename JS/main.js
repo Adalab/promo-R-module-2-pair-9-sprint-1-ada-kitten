@@ -1,8 +1,8 @@
 'use strict';
 
-const formElement = document.querySelector('.js-new-form');
+/* const formElement = document.querySelector('.js-new-form'); */
 
-formElement.classList.remove('collapsed');
+// formElement.classList.remove('collapsed');
 
 const listElement = document.querySelector('.js-list');
 
@@ -76,6 +76,7 @@ const kittenRace1 = 'British Shorthair';
 const kittenRace2 = 'British Shorthair';
 const kittenRace3 = 'British Shorthair';
 
+/*
 const kittenOne = `<li class="card">
 <article>
   <img
@@ -116,11 +117,12 @@ const kittenThree = `<li class="card">
 ${kittenDesc3}
 </p>
 </li>`;
-
+*/
 // const content = kittenOne + kittenTwo + kittenThree;
 
 // listElement.innerHTML = content;
 
+/*
 const input_search_desc = document.querySelector('.js_in_search_desc');
 
 input_search_desc.value = '';
@@ -139,7 +141,9 @@ if (kittenDesc3.includes(descrSearchText)) {
   listElement.innerHTML += kittenThree;
 }
 
-formElement.classList.add('collapsed');
+*/
+
+// formElement.classList.add('collapsed');
 /* CORTAMOS ESTO PARA EL EJERCICIO EVENTOS
 
 if (formElement.classList.contains('collapsed')) {
@@ -162,66 +166,159 @@ if (kittenRace1 === '') {
 }
 */
 
-const plusElement = document.querySelector ('.js-plus');
+// const plusElement = document.querySelector('.js-plus');
 
-plusElement.addEventListener('click', (event) => {
+// plusElement.addEventListener('click', (event) => {
+//   event.preventDefault();
 
-  event.preventDefault();
+//   if (formElement.classList.contains('collapsed')) {
+//     formElement.classList.remove('collapsed');
+//   } else {
+//     formElement.classList.add('collapsed');
+//   }
+// });
 
-  if (formElement.classList.contains('collapsed')) {
-    formElement.classList.remove('collapsed');
-  } else {
-    formElement.classList.add('collapsed');
-  }
-})
-
-const añadirElement = document.querySelector ('.js-btn-add');
+const añadirElement = document.querySelector('.js-btn-add');
 const inputDesc = document.querySelector('.js-input-desc');
 const inputPhoto = document.querySelector('.js-input-photo');
 const inputName = document.querySelector('.js-input-name');
 const labelMesageError = document.querySelector('.js-label-error');
-const validationElement= document.querySelector ('.js-validation');
+const validationElement = document.querySelector('.js-validation');
 
-
-añadirElement.addEventListener('click', (event)=> {
-/*   event.preventDefault(); */
+añadirElement.addEventListener('click', (event) => {
+  /*   event.preventDefault(); */
   const valueDesc = inputDesc.value;
   const valuePhoto = inputPhoto.value;
   const valueName = inputName.value;
   if (valueDesc === '' || valuePhoto === '' || valueName === '') {
-     validationElement.innerHTML = 'Debe rellenar todos los valores';
-    }
-  })
+    validationElement.innerHTML = 'Debe rellenar todos los valores';
+  }
+});
 
-  const searchElement = document.querySelector ('.js-search');
-  const inputRaceElement = document.querySelector ('.js-inputRace');
-  const searchValidatorElement = document.querySelector ('.js-searchValidator');
-  
+const searchElement = document.querySelector('.js-search');
+const inputRaceElement = document.querySelector('.js-inputRace');
+const searchValidatorElement = document.querySelector('.js-searchValidator');
 
-   searchElement.addEventListener ('click', (event)=> {
-    const searchDescValue = input_search_desc.value;
-    const searchRaceValue = inputRaceElement.value;
-    if (searchDescValue === '' || searchRaceValue === '') {
-      searchValidatorElement.innerHTML = 'Debe rellenar todos los valores';
-     }
-   })
+searchElement.addEventListener('click', (event) => {
+  const searchDescValue = input_search_desc.value;
+  const searchRaceValue = inputRaceElement.value;
+  if (searchDescValue === '' || searchRaceValue === '') {
+    searchValidatorElement.innerHTML = 'Debe rellenar todos los valores';
+  }
+});
 
+// const cancelElement = document.querySelector('.js-cancel');
 
-   const cancelElement = document.querySelector ('.js-cancel');
-
-   cancelElement.addEventListener ('click', (event) =>{
-    event.preventDefault();
-    formElement.classList.add('collapsed');
-    const valueDesc = inputDesc.value;
-    const valuePhoto = inputPhoto.value;
-    const valueName = inputName.value;
-    valueDesc ='';
-    valuePhoto='';
-    valueName ='';
-   })
-   //SOPORTE: 
-   /* 
+// cancelElement.addEventListener('click', (event) => {
+//   event.preventDefault();
+//   formElement.classList.add('collapsed');
+//   const valueDesc = inputDesc.value;
+//   const valuePhoto = inputPhoto.value;
+//   const valueName = inputName.value;
+//   valueDesc = '';
+//   valuePhoto = '';
+//   valueName = '';
+// });
+//SOPORTE:
+/* 
    ESTA BIEN PONER VALOR ="" O EXISTE FC RESET
    PARA QUITAR REQUIRED DE CADA INPUT PARA QUE NOS DEJE OCULTAR
    BUSCAR: NO SE QUEDA EL PARRAFO DE LA VALIDACIÓN SE BORRA RÁPIDO.
    */
+
+const newFormElement = document.querySelector('.js-new-form');
+
+function showNewCatForm() {
+  newFormElement.classList.remove('collapsed');
+}
+function hideNewCatForm() {
+  newFormElement.classList.add('collapsed');
+}
+const linkNewFormElememt = document.querySelector('.js-plus');
+
+function handleClickNewCatForm(event) {
+  event.preventDefault();
+  if (newFormElement.classList.contains('collapsed')) {
+    showNewCatForm();
+  } else {
+    hideNewCatForm();
+  }
+}
+linkNewFormElememt.addEventListener('click', handleClickNewCatForm);
+
+function renderKitten(url, desc, nam, race) {
+  const includeArticle = (listElement.innerHTML += `<li class="card">
+  <article>
+    <img
+      class="card_img"
+      src="${url}"
+      alt="gatito"
+    />
+    <h3 class="card_title">${nam.toUpperCase()}</h3>
+    <h4 class="card_race">${race}</h4>
+    <p class="card_description">
+    ${desc}
+    </p>
+  </article>
+  </li>`);
+  return includeArticle;
+}
+
+/* 
+renderKitten(kittenImage1, kittenDesc1, kittenName1, kittenRace1);
+renderKitten(kittenImage2, kittenDesc2, kittenName2, kittenRace2);
+renderKitten(kittenImage3, kittenDesc3, kittenName3, kittenRace3);
+ */
+
+const input_search_desc = document.querySelector('.js_in_search_desc');
+
+input_search_desc.value = '';
+
+const descrSearchText = input_search_desc.value;
+
+if (kittenDesc1.includes(descrSearchText)) {
+  listElement.innerHTML = renderKitten(
+    kittenImage1,
+    kittenDesc1,
+    kittenName1,
+    kittenRace1
+  );
+}
+
+if (kittenDesc2.includes(descrSearchText)) {
+  listElement.innerHTML = renderKitten(
+    kittenImage2,
+    kittenDesc2,
+    kittenName2,
+    kittenRace2
+  );
+}
+
+if (kittenDesc3.includes(descrSearchText)) {
+  listElement.innerHTML = renderKitten(
+    kittenImage3,
+    kittenDesc3,
+    kittenName3,
+    kittenRace3
+  );
+}
+const buttonAdd = document.querySelector('.js-btn-add');
+//modifica el evento para cumplir una función manejadora
+
+/* CODIGO YA CREADO
+const inputDesc = document.querySelector('.js-input-desc');
+const inputPhoto = document.querySelector('.js-input-photo');
+const inputName = document.querySelector('.js-input-name');
+*/
+
+const inputRace = document.querySelector('.js-input-race');
+
+function addNewKitten(event) {
+  event.preventDefault();
+  let urlValue = inputPhoto.value;
+  let nameValue = inputName.value;
+  let descValue = inputDesc.value;
+  let raceValue = inputRace.value;
+  return renderKitten(urlValue, descValue, nameValue, raceValue);
+}
+buttonAdd.addEventListener('click', addNewKitten);
