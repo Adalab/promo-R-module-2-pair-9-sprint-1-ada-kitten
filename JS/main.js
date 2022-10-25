@@ -195,6 +195,9 @@ añadirElement.addEventListener('click', (event) => {
   }
 });
 
+/* 
+COMENTADO PARA EL EJERICCIO FUNCIONES II
+
 const searchElement = document.querySelector('.js-search');
 const inputRaceElement = document.querySelector('.js-inputRace');
 const searchValidatorElement = document.querySelector('.js-searchValidator');
@@ -206,7 +209,7 @@ searchElement.addEventListener('click', (event) => {
     searchValidatorElement.innerHTML = 'Debe rellenar todos los valores';
   }
 });
-
+ */
 // const cancelElement = document.querySelector('.js-cancel');
 
 // cancelElement.addEventListener('click', (event) => {
@@ -270,6 +273,10 @@ renderKitten(kittenImage2, kittenDesc2, kittenName2, kittenRace2);
 renderKitten(kittenImage3, kittenDesc3, kittenName3, kittenRace3);
  */
 
+
+//EJERECICIO FUNCIONES 1
+
+/*
 const input_search_desc = document.querySelector('.js_in_search_desc');
 
 input_search_desc.value = '';
@@ -301,8 +308,9 @@ if (kittenDesc3.includes(descrSearchText)) {
     kittenName3,
     kittenRace3
   );
-}
+}*/
 const buttonAdd = document.querySelector('.js-btn-add');
+
 //modifica el evento para cumplir una función manejadora
 
 /* CODIGO YA CREADO
@@ -322,3 +330,110 @@ function addNewKitten(event) {
   return renderKitten(urlValue, descValue, nameValue, raceValue);
 }
 buttonAdd.addEventListener('click', addNewKitten);
+
+
+//ejercicios funciones II
+
+
+const cancelNewKitten = (event) => {
+  event.preventDefault();
+formElement.classList.add('collapsed');
+const valueDesc = inputDesc.value;
+const valuePhoto = inputPhoto.value;
+const valueName = inputName.value;  
+valueDesc = '';
+valuePhoto = '';
+valueName = '';
+};
+
+
+const buttonCancelForm = document.querySelector('.js-btn-cancel');
+buttonCancelForm.addEventListener('click', cancelNewKitten);
+
+
+//pendiente quitar required
+
+const kittenOne = `<li class="card">
+<article>
+  <img
+    class="card_img"
+    src="${kittenImage1}"
+    alt="gatito"
+  />
+  <h3 class="card_title">${kittenName1.toUpperCase()}</h3>
+  <h4 class="card_race">${kittenRace1}</h4>
+  <p class="card_description">
+  ${kittenDesc1}
+  </p>
+</article>
+</li>`;
+
+const kittenTwo = ` <li class="card">
+<img
+  class="card_img"
+  src="${kittenImage2}"
+  alt="gatito"
+/>
+<h3 class="card_title">${kittenName2.toUpperCase()}</h3>
+<h4 class="card_race">${kittenRace2}</h4>
+<p class="card_description">
+${kittenDesc2}
+</p>
+</li>`;
+
+const kittenThree = `<li class="card">
+<img
+  class="card_img"
+  src="${kittenImage3}"
+  alt="gatito"
+/>
+<h3 class="card_title">${kittenName3.toUpperCase()}</h3>
+<h4 class="card_race">${kittenRace3}</h4>
+<p class="card_description">
+${kittenDesc3}
+</p>
+</li>`;
+
+const content = kittenOne + kittenTwo + kittenThree;
+
+const input_search_desc = document.querySelector('.js_in_search_desc');
+const descrSearchText = input_search_desc.value;
+const buttonSearch = document.querySelector('.js-button-search');
+
+/* if(input_search_desc.value===''){
+  listElement.innerHTML = content;
+} */ //PINTA LOS GATOS DOBLE
+
+const filterKitten = (event) => {
+  event.preventDefault();
+  const descrSearchText = input_search_desc.value;//dentro de la función
+  if (kittenDesc1.includes(descrSearchText)) {
+    listElement.innerHTML += kittenOne;
+  }
+  if (kittenDesc2.includes(descrSearchText)) {
+    listElement.innerHTML += kittenTwo;
+  }
+  if (kittenDesc3.includes(descrSearchText)) {
+    listElement.innerHTML += kittenThree;
+  }
+};
+
+
+
+const searchBox = document.querySelector ('.js-search');
+
+const inputRaceElement = document.querySelector('.js-inputRace');
+const renderRace = (text)=> {
+  const raceValue = inputRaceElement.value;
+  if (raceValue==='') {searchBox.innerHTML += `<p class="card_race">No se ha especificado la raza</p>`}
+  else {searchBox.innerHTML += `<h3 class="card_race">race</h3>`}
+  };
+
+  buttonSearch.addEventListener('click', filterKitten);
+  buttonSearch.addEventListener('click', renderRace);
+
+
+/*
+<h3 class="card_race">race</h3>
+<p class="card_race">No se ha especificado la raza</p>
+*/
