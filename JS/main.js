@@ -249,30 +249,29 @@ function handleClickNewCatForm(event) {
 }
 linkNewFormElememt.addEventListener('click', handleClickNewCatForm);
 
-function renderKitten(url, desc, nam, race) {
-  const includeArticle = (listElement.innerHTML += `<li class="card">
-  <article>
-    <img
-      class="card_img"
-      src="${url}"
-      alt="gatito"
-    />
-    <h3 class="card_title">${nam.toUpperCase()}</h3>
-    <h4 class="card_race">${race}</h4>
-    <p class="card_description">
-    ${desc}
-    </p>
-  </article>
-  </li>`);
-  return includeArticle;
-}
+// function renderKitten(url, desc, nam, race) {
+//   const includeArticle = (listElement.innerHTML += `<li class="card">
+//   <article>
+//     <img
+//       class="card_img"
+//       src="${url}"
+//       alt="gatito"
+//     />
+//     <h3 class="card_title">${nam.toUpperCase()}</h3>
+//     <h4 class="card_race">${race}</h4>
+//     <p class="card_description">
+//     ${desc}
+//     </p>
+//   </article>
+//   </li>`);
+//   return includeArticle;
+// }
 
 /* 
 renderKitten(kittenImage1, kittenDesc1, kittenName1, kittenRace1);
 renderKitten(kittenImage2, kittenDesc2, kittenName2, kittenRace2);
 renderKitten(kittenImage3, kittenDesc3, kittenName3, kittenRace3);
  */
-
 
 //EJERECICIO FUNCIONES 1
 
@@ -331,25 +330,21 @@ function addNewKitten(event) {
 }
 buttonAdd.addEventListener('click', addNewKitten);
 
-
 //ejercicios funciones II
-
 
 const cancelNewKitten = (event) => {
   event.preventDefault();
-formElement.classList.add('collapsed');
-const valueDesc = inputDesc.value;
-const valuePhoto = inputPhoto.value;
-const valueName = inputName.value;  
-valueDesc = '';
-valuePhoto = '';
-valueName = '';
+  formElement.classList.add('collapsed');
+  const valueDesc = inputDesc.value;
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+  valueDesc = '';
+  valuePhoto = '';
+  valueName = '';
 };
-
 
 const buttonCancelForm = document.querySelector('.js-btn-cancel');
 buttonCancelForm.addEventListener('click', cancelNewKitten);
-
 
 //pendiente quitar required
 
@@ -406,7 +401,7 @@ const buttonSearch = document.querySelector('.js-button-search');
 
 const filterKitten = (event) => {
   event.preventDefault();
-  const descrSearchText = input_search_desc.value;//dentro de la función
+  const descrSearchText = input_search_desc.value; //dentro de la función
   if (kittenDesc1.includes(descrSearchText)) {
     listElement.innerHTML += kittenOne;
   }
@@ -418,22 +413,76 @@ const filterKitten = (event) => {
   }
 };
 
+// const searchBox = document.querySelector('.js-search');
 
+// const inputRaceElement = document.querySelector('.js-inputRace');
+// const renderRace = (text) => {
+//   const raceValue = inputRaceElement.value;
+//   if (raceValue === '') {
+//     searchBox.innerHTML += `<p class="card_race">No se ha especificado la raza</p>`;
+//   } else {
+//     searchBox.innerHTML += `<h3 class="card_race">race</h3>`;
+//   }
+// };
 
-const searchBox = document.querySelector ('.js-search');
-
-const inputRaceElement = document.querySelector('.js-inputRace');
-const renderRace = (text)=> {
-  const raceValue = inputRaceElement.value;
-  if (raceValue==='') {searchBox.innerHTML += `<p class="card_race">No se ha especificado la raza</p>`}
-  else {searchBox.innerHTML += `<h3 class="card_race">race</h3>`}
-  };
-
-  buttonSearch.addEventListener('click', filterKitten);
-  buttonSearch.addEventListener('click', renderRace);
-
+buttonSearch.addEventListener('click', filterKitten);
+buttonSearch.addEventListener('click', renderRace);
 
 /*
 <h3 class="card_race">race</h3>
 <p class="card_race">No se ha especificado la raza</p>
 */
+
+//Creando objetos
+const kittenData_1 = {
+  image: kittenImage1,
+  name: kittenName1,
+  desc: kittenDesc1,
+  race: kittenRace1,
+};
+const kittenData_2 = {
+  image: kittenImage2,
+  name: kittenName2,
+  desc: kittenDesc2,
+  race: kittenRace2,
+};
+const kittenData_3 = {
+  image: kittenImage3,
+  name: kittenName3,
+  desc: kittenDesc3,
+  race: kittenRace3,
+};
+
+//function renderKitten Comentada en la linea 252
+
+function renderKitten(kittenData) {
+  const includeArticle = (listElement.innerHTML += `<li class="card">
+      <article>
+        <img
+         class="card_img"
+          src="${kittenData.kittenImage}"
+           alt="gatito"
+        />
+       <h3 class="card_title">${kittenData.KittenName.toUpperCase()}</h3>
+        <h4 class="card_race">${kittenData.KittenRace}</h4>
+      <p class="card_description">
+      ${kittenData.kittenDesc}
+      </p>
+     </article>
+       </li>`);
+  return includeArticle;
+}
+
+//Function renderRace Comentada en la linea 419
+const searchBox = document.querySelector('.js-search');
+const inputRaceElement = document.querySelector('.js-inputRace');
+
+const renderRace = (text) => {
+  const raceValue = inputRaceElement.value;
+  if (raceValue === '') {
+    searchBox.innerHTML += `<p class="card_race">No se ha especificado la raza</p>`;
+  } else {
+    searchBox.innerHTML += `<h3 class="card_race">race</h3>`;
+  }
+};
+//No he sabido hacer esto último
