@@ -473,16 +473,17 @@ function renderKitten(kittenData) {
   return includeArticle;
 }
 
-//Function renderRace Comentada en la linea 419
-const searchBox = document.querySelector('.js-search');
-const inputRaceElement = document.querySelector('.js-inputRace');
+//TEMA ARRAYS
 
-const renderRace = (text) => {
-  const raceValue = inputRaceElement.value;
-  if (raceValue === '') {
-    searchBox.innerHTML += `<p class="card_race">No se ha especificado la raza</p>`;
-  } else {
-    searchBox.innerHTML += `<h3 class="card_race">race</h3>`;
-  }
-};
-//No he sabido hacer esto último
+const kittenDataList = [kittenData_1,kittenData_2,kittenData_3]
+
+//TEMA BUCLES
+
+function renderKittenList(kittenDataList) {
+  
+  //Completa el código:
+  //Vaciamos el innerHTML del <ul> de la página.
+  //Iteramos sobre el listado de gatitos
+  //Y por cada iteración pintamos un gatito.
+  //utilizando la función renderKitten(kittenItem)
+}
